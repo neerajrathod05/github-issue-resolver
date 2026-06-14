@@ -1,0 +1,6 @@
+{
+  "watch": ["src/server.js", "src/agent", "src/github"],
+  "ignore": ["src/utils.js", "src/helpers.js", "src/tax/"],
+  "ext": "js",
+  "exec": "node src/server.js"
+}

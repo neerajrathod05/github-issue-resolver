@@ -1,25 +1,17 @@
-let octokitPromise;
+require("dotenv").config();
+const { Octokit } = require("@octokit/rest");
 
-function getOctokit() {
-  if (!octokitPromise) {
-    octokitPromise = import("@octokit/rest").then((mod) => {
-      const Octokit = mod.Octokit || mod.default?.Octokit || mod.default;
-      return new Octokit({ auth: process.env.GITHUB_TOKEN });
-    });
-  }
-  return octokitPromise;
-}
+const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
 // Recursively get all JS files from the repo
 async function getRepoFiles() {
-  const octokit = await getOctokit();
   const { data: tree } = await octokit.git.getTree({
     owner: process.env.REPO_OWNER,
     repo: process.env.REPO_NAME,
     tree_sha: "main",
     recursive: "true",
   });
-
+  
   // Filter only .js files (skip node_modules)
   const jsFiles = tree.tree.filter(
     (f) =>
