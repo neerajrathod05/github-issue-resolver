@@ -1,0 +1,24 @@
+{
+  "name": "github-issue-resolver",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.100.1",
+    "@octokit/rest": "^22.0.1",
+    "crypto": "^1.0.1",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "simple-git": "^3.36.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
